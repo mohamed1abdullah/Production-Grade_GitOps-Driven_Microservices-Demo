@@ -20,37 +20,37 @@ images:
   adservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/adservice
     # Overrides the image tag whose default is the chart appVersion.
-    tag: latest
+    tag: v0.10.4
   cartservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/cartservice
-    tag: latest
+    tag: v0.10.4
   checkoutservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/checkoutservice
-    tag: latest
+    tag: v0.10.4
   currencyservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/currencyservice
-    tag: latest
+    tag: v0.10.4
   emailservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/emailservice
-    tag: latest
+    tag: v0.10.4
   frontend:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/frontend
-    tag: latest
+    tag: v0.10.4
   loadgenerator:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/loadgenerator
-    tag: latest
+    tag: v0.10.4
   paymentservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/paymentservice
-    tag: latest
+    tag: v0.10.4
   productcatalogservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/productcatalogservice
-    tag: latest
+    tag: v0.10.4
   recommendationservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/recommendationservice
-    tag: latest
+    tag: v0.10.4
   shippingservice:
     repository: ghcr.io/mohamed1abdullah/microservices-demo/shippingservice
-    tag: latest
+    tag: v0.10.4
 
 serviceAccounts:
   # Specifies whether service accounts should be created.
