@@ -41,11 +41,28 @@ jobs:
       # -------------------
       - name: Build Image
         run: |
-          docker build \
-            --cache-from=type=gha \
-            --cache-to=type=gha,mode=max \
-            -t $IMAGE_NAME \
-            ./src/${{ inputs.service }}
+              SERVICE="./src/${{ inputs.service }}"
+
+              if [ -f "$SERVICE/Dockerfile" ]; then
+                DOCKERFILE="$SERVICE/Dockerfile"
+                CONTEXT="$SERVICE"
+              elif [ -f "$SERVICE/src/Dockerfile" ]; then
+                DOCKERFILE="$SERVICE/src/Dockerfile"
+                CONTEXT="$SERVICE/src"
+              else
+                echo "Dockerfile not found for ${{ inputs.service }}"
+                exit 1
+              fi
+
+                echo "Using Dockerfile: $DOCKERFILE"
+                echo "Build context: $CONTEXT"
+
+              docker build \
+                --cache-from=type=gha \
+                --cache-to=type=gha,mode=max \
+                -t "$IMAGE_NAME" \
+                -f "$DOCKERFILE" \
+                "$CONTEXT"
 
       # -------------------
       # Security Scan (before push)
