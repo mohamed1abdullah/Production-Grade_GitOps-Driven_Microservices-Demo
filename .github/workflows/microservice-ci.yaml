@@ -54,8 +54,8 @@ jobs:
                 exit 1
               fi
 
-                echo "Using Dockerfile: $DOCKERFILE"
-                echo "Build context: $CONTEXT"
+              echo "Using Dockerfile: $DOCKERFILE"
+              echo "Build context: $CONTEXT"
 
               docker build \
                 --cache-from=type=gha \
