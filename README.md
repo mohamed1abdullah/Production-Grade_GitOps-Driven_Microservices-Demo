@@ -534,13 +534,13 @@ Installation of Gateway API CRDs
 - Standard Gateway API CRDs:  [REQUIRED]
     
     ```bash
-    kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml
+    kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.6.1/standard-install.yaml
     ```
     
 - Experimental Gateway API CRDs:  [OPTIONAL: Used for L4 Routes]
     
     ```bash
-    kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/experimental-install.yaml
+    kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.6.1/experimental-install.yaml
     ```
     
 - Installation of LBC Gateway API specific CRDs:
