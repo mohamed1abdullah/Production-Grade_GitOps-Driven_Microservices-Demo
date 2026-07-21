@@ -308,7 +308,7 @@ Clone te repo , `cd` to `terraform` directory. Do
 
 ```bash
 terraform init
-Terraform plan 
+terraform plan 
 ```
 
 Verify the resources and then do
@@ -327,7 +327,7 @@ Create a bucket using Console or AWS CLI.
 
 ```bash
 aws s3api create-bucket \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket mo-abdullah-terraform-backend-2026 \
   --region us-east-1
 ```
 
@@ -336,12 +336,12 @@ Enable versioning and bucket encryption:
 ```bash
 # Enable versioning
 aws s3api put-bucket-versioning \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket mo-abdullah-terraform-backend-2026 \
   --versioning-configuration Status=Enabled
 
 # Enable encryption
 aws s3api put-bucket-encryption \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket mo-abdullah-terraform-backend-2026 \
   --server-side-encryption-configuration '{
     "Rules":[{
       "ApplyServerSideEncryptionByDefault":{
@@ -357,7 +357,7 @@ Add this below backend block in `terraform.tf` file
 ```bash
 terraform {
   backend "s3" {
-    bucket = "devopsdock-terraform-backend-bucket"
+    bucket = "mo-abdullah-terraform-backend-2026"
     key    = "s3-backend"
     region = "us-east-1"
   }
@@ -381,7 +381,7 @@ Do you want to copy existing state to the new backend?
   Enter a value: 
 ```
 
-Type “Yes”, The backend will move to s3.
+Type “yes”, The backend will move to s3.
 
 Now the state will be reading from s3 backend.
 
@@ -404,7 +404,7 @@ Now install the below tools  in the Bastion Host:
 
 - [https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - [https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management)
-- [https://helm.sh/docs/intro/install/](https://helm.sh/docs/intro/install/)
+- [https://medium.com/@udarasenarath/installing-and-configuring-helm-on-ubuntu-6bf859ac2a03](https://medium.com/@udarasenarath/installing-and-configuring-helm-on-ubuntu-6bf859ac2a03)
 - [https://docs.aws.amazon.com/eks/latest/eksctl/installation.html](https://docs.aws.amazon.com/eks/latest/eksctl/installation.html)
 
 Do `aws configure` and set up with the access and secret access keys , You can use the same access and secret access key which you set it up in the local.
@@ -498,9 +498,9 @@ eksctl utils associate-iam-oidc-provider \
         ```bash
         helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller \
           -n kube-system \
-          --set clusterName=test-terraform-cluster \
-          --set region=us-east-1 \
-          --set vpcId=vpc-045ed20a9ec483107 \
+          --set clusterName=<cluster_name> \
+          --set region=<region-code> \
+          --set vpcId=<VPC_id> \
           --set serviceAccount.create=false \
           --set serviceAccount.name=aws-load-balancer-controller \
           --set controllerConfig.featureGates.NLBGatewayAPI=true \
