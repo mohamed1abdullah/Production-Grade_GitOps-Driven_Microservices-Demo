@@ -2717,12 +2717,12 @@ metadata:
   namespace: logging
 spec:
   targetReference:
-    name: eck-kibana-kb-http 
+    name: eck-kibana-kb-http
   defaultConfiguration:
     targetType: ip
     protocol: HTTPS
     healthCheckConfig:
-      healthCheckProtocol: HTTPS
+      healthCheckProtocol: https
       healthCheckPath: /api/status
 ```
 
