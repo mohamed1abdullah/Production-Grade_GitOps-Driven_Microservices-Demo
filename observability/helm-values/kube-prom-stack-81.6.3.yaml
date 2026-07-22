@@ -540,13 +540,14 @@ alertmanager:
       routes:
       - receiver: 'slack-notification'
         matchers:
+          - alertname = "Watchdog"
           - severity = "critical"
     receivers:
     - name: 'slack-notification'
       slack_configs:
-        - api_url_file: /etc/alertmanager/secrets/alertmanager-slack-webhook/slack-webhook-url
-          channel: '#alerts'
-          send_resolved: true
+          - api_url_file: /etc/alertmanager/secrets/alertmanager-slack-webhook/slack-webhook-url
+            channel: '#alert-manager'
+            send_resolved: true
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
@@ -894,7 +895,8 @@ alertmanager:
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#alertmanagerspec
   ##
   alertmanagerSpec:
-    ## Statefulset's persistent volume claim retention policy
+   
+  ## Statefulset's persistent volume claim retention policy
     ## whenDeleted and whenScaled determine whether
     ## statefulset's PVCs are deleted (true) or retained (false)
     ## on scaling down and deleting statefulset, respectively.
@@ -929,7 +931,7 @@ alertmanager:
     ## Secrets is a list of Secrets in the same namespace as the Alertmanager object, which shall be mounted into the
     ## Alertmanager Pods. The Secrets are mounted into /etc/alertmanager/secrets/.
     ##
-    secrets:
+    secrets: 
       - alertmanager-slack-webhook
 
     ## If false then the user will opt out of automounting API credentials.
